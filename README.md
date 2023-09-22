@@ -1,5 +1,3 @@
-**References:**
+**My Neovim Config**
 
-- https://github.com/ThePrimeagen/init.lua
-- https://github.com/josean-dev/dev-environment-files/tree/packer-nvim-setup
-- https://github.com/dreamsofcode-io/neovim-python
+Inspired by the congifs of ThePrimeagen, josean-dev, and dreamsofcode-io.
