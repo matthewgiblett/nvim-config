@@ -1,6 +1,6 @@
 return {
-	"nvim-lua/plenary.nvim", -- lua functions that many plugins use
-	"christoomey/vim-tmux-navigator", -- tmux & split window navigation
-	"inkarkat/vim-ReplaceWithRegister", -- replace with register contents using motion (gr + motion)
-	"ThePrimeagen/vim-be-good",
+	"nvim-lua/plenary.nvim",
+	"christoomey/vim-tmux-navigator",
+	{ "inkarkat/vim-ReplaceWithRegister", event = { "BufReadPre", "BufNewFile" } },
+	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 }

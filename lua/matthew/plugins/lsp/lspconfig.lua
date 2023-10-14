@@ -33,9 +33,9 @@ return {
 			opts.desc = "Smart rename"
 			keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
 			opts.desc = "Show line diagnostic"
-			keymap.set("n", "<leader>D", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+			keymap.set("n", "<leader>dD", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
 			opts.desc = "Show cursor diagnostic"
-			keymap.set("n", "<leader>d", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+			keymap.set("n", "<leader>dd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
 			opts.desc = "Go to previous diagnostic"
 			keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 			opts.desc = "Go to next diagnostic"
@@ -76,9 +76,25 @@ return {
 			},
 		})
 
+		-- capabilities.textDocument.publishDiagnostics = { tagSupport = { valueSet = { 2 } } }
+
 		lspconfig["pyright"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			settings = {
+				python = {
+					analysis = {
+						autoSearchPaths = true,
+						useLibraryCodeForTypes = true,
+						typeCheckingMode = "basic",
+						diagnosticMode = "openFilesOnly",
+						diagnosticSeverityOverrides = {
+							reportUnusedImport = "none",
+							reportUnusedVariable = "error",
+						},
+					},
+				},
+			},
 		})
 	end,
 }

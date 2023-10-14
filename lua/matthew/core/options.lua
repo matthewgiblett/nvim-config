@@ -1,6 +1,8 @@
 local opt = vim.opt
 
 opt.guicursor = ""
+opt.fillchars = { eob = " " }
+vim.g.python3_host_prog = vim.fn.exepath("python3")
 
 -- line numbers
 opt.relativenumber = true

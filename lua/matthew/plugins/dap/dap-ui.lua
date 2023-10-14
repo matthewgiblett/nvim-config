@@ -1,6 +1,9 @@
 return {
 	"rcarriga/nvim-dap-ui",
 	dependencies = "mfussenegger/nvim-dap",
+	keys = {
+		{ "<leader>du", '<cmd>lua require"dapui".toggle()<CR>', desc = "Debugging toggle UI" },
+	},
 	config = function()
 		local dap = require("dap")
 		local dapui = require("dapui")
