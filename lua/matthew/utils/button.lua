@@ -3,7 +3,7 @@ if not status then
 	return { type = "padding", val = 1 }
 end
 
-local colours = require("matthew.core.alpha.colours").button
+local colours = require("matthew.core.colourscheme").alpha.button
 
 return function(sc, txt, keybind, keybind_opts)
 	local b = dashboard.button(sc, txt, keybind, keybind_opts)

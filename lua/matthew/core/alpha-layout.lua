@@ -1,8 +1,9 @@
 math.randomseed(os.time())
-local get_greeting = require("matthew.core.alpha.greeting")
-local colours = require("matthew.core.alpha.colours")
-local button = require("matthew.core.alpha.button")
-local get_mru = require("matthew.core.alpha.mru")
+local get_greeting = require("matthew.utils.greeting")
+local headers = require("matthew.core.headers")
+local colours = require("matthew.core.colourscheme").alpha
+local button = require("matthew.utils.button")
+local get_mru = require("matthew.utils.mru")
 local lazy_stats = require("lazy").stats()
 
 local opts = function(colour_key)
@@ -11,7 +12,7 @@ end
 
 local header = {
 	type = "text",
-	val = require("matthew.core.alpha.headers")["random"],
+	val = headers["random"],
 	opts = opts("primary"),
 }
 

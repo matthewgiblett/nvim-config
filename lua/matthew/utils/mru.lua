@@ -8,7 +8,7 @@ if not path_status then
 	return { type = "padding", val = 1 }
 end
 
-local button = require("matthew.core.alpha.button")
+local button = require("matthew.utils.button")
 
 local default_mru_ignore = { "gitcommit" }
 local mru_opts = {
@@ -56,7 +56,7 @@ local function file_button(fn, sc, short_fn)
 	return file_button_el
 end
 
-return function(start, cwd, items_number, opts)
+local mru = function(start, cwd, items_number, opts)
 	opts = opts or mru_opts
 	items_number = items_number or 9
 
@@ -112,3 +112,5 @@ return function(start, cwd, items_number, opts)
 		opts = {},
 	}
 end
+
+return mru
