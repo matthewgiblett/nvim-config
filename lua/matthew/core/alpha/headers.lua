@@ -342,7 +342,7 @@ local headers = {
 
 return setmetatable(headers, {
 	__index = function(tb, key)
-		if key == "random" then
+		if key == "random" or not vim.tbl_contains(tb, key) then
 			local keys = vim.tbl_keys(tb)
 			return tb[keys[math.random(1, #keys)]]
 		else
