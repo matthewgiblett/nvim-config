@@ -1,8 +1,11 @@
 local opt = vim.opt
 
+-- key can be "random"
+vim.g.colourscheme_key = "random"
+vim.g.python3_host_prog = vim.fn.exepath("python3")
+
 opt.guicursor = ""
 opt.fillchars = { eob = " " }
-vim.g.python3_host_prog = vim.fn.exepath("python3")
 
 -- line numbers
 opt.relativenumber = true
@@ -34,7 +37,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- cursor line
-opt.cursorline = true
+opt.cursorline = false
 
 -- appearance
 opt.termguicolors = true
