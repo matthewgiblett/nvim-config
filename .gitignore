@@ -5,4 +5,5 @@
 !/zsh
 
 !.gitignore
+!LICENSE
 !README.md
