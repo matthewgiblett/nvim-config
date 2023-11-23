@@ -25,7 +25,7 @@ opt.wrap = false
 -- undo file
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undodir = os.getenv("XDG_STATE_HOME") .. "/nvim/undodir"
 opt.undofile = true
 
 -- search
