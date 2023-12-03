@@ -26,6 +26,7 @@ return {
 					"c",
 					"python",
 					"rust",
+					"toml",
 				},
 				auto_install = true,
 				sync_install = false,
