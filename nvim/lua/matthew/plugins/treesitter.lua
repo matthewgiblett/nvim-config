@@ -25,6 +25,7 @@ return {
 					"gitignore",
 					"c",
 					"python",
+					"rust",
 				},
 				auto_install = true,
 				sync_install = false,

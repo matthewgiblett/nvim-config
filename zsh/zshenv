@@ -8,3 +8,5 @@ export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:=/tmp}"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
 export NPM_CONFIG_PREFIX="$XDG_DATA_HOME"/npm
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME"/npm
+export CARGO_HOME="$HOME"/.local/lib/cargo
+export RUSTUP_HOME="$HOME"/.local/lib/rustup

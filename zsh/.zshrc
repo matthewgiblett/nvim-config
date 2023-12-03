@@ -18,4 +18,4 @@ HISTSIZE=130000
 SAVEHIST=100000
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 export LESSHISTFILE=-
-export PATH=/opt/homebrew/bin:$HOME/.local/bin:$NPM_CONFIG_PREFIX/bin:$XDG_DATA_HOME/nvim/mason/bin:$PATH
+export PATH=/opt/homebrew/bin:$HOME/.local/bin:$NPM_CONFIG_PREFIX/bin:$CARGO_HOME/bin:$XDG_DATA_HOME/nvim/mason/bin:$PATH
