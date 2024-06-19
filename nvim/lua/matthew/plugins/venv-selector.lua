@@ -4,8 +4,12 @@ return {
 	opts = {
 		name = { "venv", ".venv", "env", ".env" },
 	},
+	lazy = false,
+	branch = "regexp",
+	config = function()
+		require("venv-selector").setup()
+	end,
 	keys = {
-		{ "<leader>vs", "<cmd>VenvSelect<cr>" },
-		{ "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+		{ "<leader>v", "<cmd>VenvSelect<cr>" },
 	},
 }
