@@ -43,6 +43,7 @@ opt.cursorline = false
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
+opt.colorcolumn = "72"
 
 -- backspace
 opt.backspace = "indent,eol,start"
