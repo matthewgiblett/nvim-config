@@ -2,6 +2,7 @@
 
 !/nvim
 !/tmux
+!/wezterm
 !/zsh
 
 !.gitignore
