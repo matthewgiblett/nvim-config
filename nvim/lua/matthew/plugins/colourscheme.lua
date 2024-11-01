@@ -12,12 +12,20 @@ local function get_files(dir)
 	return files
 end
 
+local function get_keys(t)
+	local keys = {}
+	for key, _ in pairs(t) do
+		table.insert(keys, key)
+	end
+	return keys
+end
+
 local cs_key = vim.g.colourscheme_key
 local cs_dir = vim.fn.stdpath("config") .. "/lua/matthew/plugins/colourschemes/*lua"
 local cs_files = get_files(cs_dir)
 local colourschemes = {}
 
-if cs_key == "random" or not vim.tbl_contains(cs_files, cs_key) then
+if cs_key == "random" or not vim.tbl_contains(get_keys(cs_files), cs_key) then
 	local keys = vim.tbl_keys(cs_files)
 	cs_key = keys[math.random(1, #keys)]
 end

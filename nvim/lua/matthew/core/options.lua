@@ -1,6 +1,7 @@
 local opt = vim.opt
 
--- key can be "random"
+-- colourscheme key can be "random" or specific  file
+-- e.g., "rose-pine"
 vim.g.colourscheme_key = "random"
 vim.g.python3_host_prog = vim.fn.exepath("python3")
 
