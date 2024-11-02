@@ -1,2 +1,1 @@
-require("matthew.core")
-require("matthew.lazy")
+require("core")

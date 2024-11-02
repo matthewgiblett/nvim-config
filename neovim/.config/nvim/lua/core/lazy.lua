@@ -26,9 +26,9 @@ if not status_ok then
 end
 
 lazy.setup({
-	{ import = "matthew.plugins" },
-	{ import = "matthew.plugins.lsp" },
-	{ import = "matthew.plugins.dap" },
+	{ import = "plugins" },
+	{ import = "plugins.lsp" },
+	{ import = "plugins.dap" },
 }, {
 	checker = {
 		enabled = true,

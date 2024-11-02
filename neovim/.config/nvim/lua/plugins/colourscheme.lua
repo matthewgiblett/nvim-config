@@ -7,7 +7,7 @@ local function get_files(dir)
 	local files = {}
 	for _, file in pairs(paths) do
 		local key = get_file_name(file)
-		files[key] = "matthew.plugins.colourschemes." .. key
+		files[key] = "plugins.colourschemes." .. key
 	end
 	return files
 end
@@ -21,7 +21,7 @@ local function get_keys(t)
 end
 
 local cs_key = vim.g.colourscheme_key
-local cs_dir = vim.fn.stdpath("config") .. "/lua/matthew/plugins/colourschemes/*lua"
+local cs_dir = vim.fn.stdpath("config") .. "/lua/plugins/colourschemes/*lua"
 local cs_files = get_files(cs_dir)
 local colourschemes = {}
 

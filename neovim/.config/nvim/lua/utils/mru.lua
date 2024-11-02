@@ -8,7 +8,7 @@ if not path_status then
 	return { type = "padding", val = 1 }
 end
 
-local button = require("matthew.utils.button")
+local button = require("utils.button")
 
 local default_mru_ignore = { "gitcommit" }
 local mru_opts = {
