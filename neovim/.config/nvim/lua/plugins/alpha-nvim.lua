@@ -4,12 +4,14 @@ local alpha = {
 	dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
 	config = function()
 		local headers = require("core.headers")
-		local get_greeting = require("utils.greeting")
-		local button = require("utils.button")
-		local get_mru = require("utils.mru")
 		local lazy_stats = require("lazy").stats()
 		local colours = vim.g.colourscheme_alpha
 		local theme = vim.g.colourscheme_name
+
+		local ui = require("utils.ui")
+		local get_greeting = ui.get_greeting
+		local button = ui.button
+		local files_buttons = ui.most_recent_files_buttons
 
 		local opts = function(colour_key)
 			return { position = "center", hl = colours[colour_key] }
@@ -86,7 +88,7 @@ local alpha = {
 				},
 				{
 					type = "group",
-					val = { get_mru(1, vim.fn.getcwd(), 5) },
+					val = { files_buttons(1, 5, vim.fn.getcwd(), colours.button) },
 					opts = { shrink_margin = false },
 				},
 			},
