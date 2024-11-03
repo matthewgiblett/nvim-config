@@ -80,4 +80,45 @@ function F.file_button(filename, shortcut, short_filename, highlight_opts)
 	return button
 end
 
+--- @param start integer? optional default 1
+--- @param stop integer? optional default 9
+--- @param cwd string? optional current working directory
+--- @param highlight_opts table? optional settings: {text, file, shortcut}
+function F.most_recent_files_buttons(start, stop, cwd, highlight_opts)
+	local path_status, path = pcall(require, "plenary.path")
+	local shortcuts = { "a", "s", "d", "z", "x" }
+	local max_file_chars = 35
+
+	local buttons = {}
+	local files = functions.get_most_recent_files(start, stop, cwd)
+	for index, filename in ipairs(files) do
+		local short_filename
+		if cwd then
+			short_filename = vim.fn.fnamemodify(filename, ":.")
+		else
+			short_filename = vim.fn.fnamemodify(filename, ":~")
+		end
+
+		while #short_filename > max_file_chars and path_status do
+			short_filename = path.new(short_filename):shorten(1, { -2, -1 })
+		end
+
+		local shortcut = ""
+		if index <= #shortcuts then
+			shortcut = shortcuts[index]
+		else
+			shortcut = tostring(index + start - 1 - #shortcuts)
+		end
+
+		local button = F.file_button(filename, " " .. shortcut, short_filename, highlight_opts)
+		buttons[index] = button
+	end
+
+	return {
+		type = "group",
+		val = buttons,
+		opts = {},
+	}
+end
+
 return F
