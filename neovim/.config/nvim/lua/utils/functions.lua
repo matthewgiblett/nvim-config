@@ -20,6 +20,36 @@ function F.get_icon(filename)
 	return devicons.get_icon(filename, extension, { default = true })
 end
 
+function F.echo_table(table)
+	vim.api.nvim_echo({
+		{ vim.inspect(table) .. "\n" },
+	}, true, {})
+end
+
+function F.echo_table_pairs(table)
+	for k, v in pairs(table) do
+		vim.api.nvim_echo({
+			{ k .. " : " .. v .. "\n" },
+		}, true, {})
+	end
+end
+
+function F.echo_table_keys(table)
+	for k in pairs(table) do
+		vim.api.nvim_echo({
+			{ k .. "\n" },
+		}, true, {})
+	end
+end
+
+function F.echo_table_values(table)
+	for _, v in pairs(table) do
+		vim.api.nvim_echo({
+			{ v .. "\n" },
+		}, true, {})
+	end
+end
+
 --- @param shortcut string
 --- @param text string
 --- @param keybind string? optional
