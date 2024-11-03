@@ -2,6 +2,31 @@ local functions = require("utils.functions")
 
 local F = {}
 
+--- @param name string
+function F.get_greeting(name)
+	local index
+	local greetings = {
+		[1] = "  Sleep well",
+		[2] = "  Good morning",
+		[3] = "  Good afternoon",
+		[4] = "  Good evening",
+		[5] = "  Good night",
+	}
+	local hour = os.date("*t").hour
+	if hour == 23 or hour < 7 then
+		index = 1
+	elseif hour < 12 then
+		index = 2
+	elseif hour >= 12 and hour < 18 then
+		index = 3
+	elseif hour >= 18 and hour < 21 then
+		index = 4
+	elseif hour >= 21 then
+		index = 5
+	end
+	return greetings[index] .. ", " .. name
+end
+
 --- @param shortcut string
 --- @param text string
 --- @param keybind string? optional
