@@ -30,9 +30,8 @@ end
 --- @param shortcut string
 --- @param text string
 --- @param keybind string? optional
---- @param keybind_opts table? optional
 --- @param highlight_opts table? optional settings: {text, shortcut}
-function F.button(shortcut, text, keybind, keybind_opts, highlight_opts)
+function F.button(shortcut, text, keybind, highlight_opts)
 	local sub_shortcut = shortcut:gsub("%s", ""):gsub("SPC", "<leader>")
 
 	-- Default highlight settings
@@ -51,7 +50,7 @@ function F.button(shortcut, text, keybind, keybind_opts, highlight_opts)
 	opts.shortcut = shortcut
 
 	if keybind then
-		keybind_opts = vim.F.if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
+		local keybind_opts = { noremap = true, silent = true, nowait = true }
 		opts.keymap = { "n", sub_shortcut, keybind, keybind_opts }
 	end
 
@@ -77,30 +76,27 @@ function F.file_button(filename, shortcut, short_filename, highlight_opts)
 
 	-- Default highlight settings
 	highlight_opts = highlight_opts or {}
-	local hl_text = highlight_opts.text or "String"
-	local hl_file = highlight_opts.file or "Error"
-	local hl_shortcut = highlight_opts.shortcut or "Keyword"
+	local text_colour = highlight_opts.text or "String"
+	local file_colour = highlight_opts.file or "Error"
+	local shortcut_colour = highlight_opts.shortcut or "Keyword"
 
-	local parent_directory = short_filename:match(".*[/\\]")
-	local icon, hl = functions.get_icon(filename)
+	local parent_directory = short_filename:match(".*[/\\]") or ""
+	local icon, icon_colour = functions.get_icon(filename)
 	local text = icon .. "  " .. short_filename
 
 	local highlights = {}
-	table.insert(highlights, { hl_text, 0, #text })
-	if hl then
-		table.insert(highlights, { hl, 0, #icon })
-	end
-	if parent_directory ~= nil then
-		table.insert(highlights, { hl_file, #text - #short_filename + #parent_directory, #text })
+	table.insert(highlights, { text_colour, 0, #text })
+	if icon_colour then
+		table.insert(highlights, { icon_colour, 0, #icon })
 	end
 
-	local keybind_opts = {}
+	table.insert(highlights, { file_colour, #text - #short_filename + #parent_directory, #text })
+
 	local button_hl_opts = {
 		text = highlights,
-		shortcut = hl_shortcut,
+		shortcut = shortcut_colour,
 	}
-	local button =
-		F.button(shortcut, text, "<cmd>e " .. vim.fn.fnameescape(filename) .. " <CR>", keybind_opts, button_hl_opts)
+	local button = F.button(shortcut, text, "<cmd>e " .. vim.fn.fnameescape(filename) .. " <CR>", button_hl_opts)
 
 	return button
 end

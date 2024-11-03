@@ -6,6 +6,7 @@ local alpha = {
 		local headers = require("core.headers")
 		local lazy_stats = require("lazy").stats()
 		local colours = vim.g.colourscheme_alpha
+		local button_hl = colours.button
 		local theme = vim.g.colourscheme_name
 
 		local ui = require("utils.ui")
@@ -60,8 +61,8 @@ local alpha = {
 			type = "group",
 			val = {
 				{ type = "text", val = "󱁤 Tools", opts = opts("heading") },
-				button("l", "󰒲  Lazy Plugin Manager", "<cmd>Lazy<CR>"),
-				button("m", "  Mason Package Manager", "<cmd>Mason<CR>"),
+				button("l", "󰒲  Lazy Plugin Manager", "<cmd>Lazy<CR>", button_hl),
+				button("m", "  Mason Package Manager", "<cmd>Mason<CR>", button_hl),
 			},
 		}
 
@@ -69,12 +70,12 @@ local alpha = {
 			type = "group",
 			val = {
 				{ type = "text", val = " Key Bindings", opts = opts("heading") },
-				button("e", "  New File", "<cmd>ene<CR>"),
-				button("SPC ee", "  Toggle File Explorer", "<cmd>NvimTreeToggle<CR>"),
-				button("SPC ff", "󰱼  Find File", "<cmd>Telescope find_files<CR>"),
-				button("SPC fs", "  Find Word", "<cmd>Telescope live_grep<CR>"),
-				button("SPC wr", "󰦛  Restore Session", "<cmd>SessionRestore<CR>"),
-				button("q", "  Quit NVIM", "<cmd>qa<CR>"),
+				button("e", "  New File", "<cmd>ene<CR>", button_hl),
+				button("SPC ee", "  Toggle File Explorer", "<cmd>NvimTreeToggle<CR>", button_hl),
+				button("SPC ff", "󰱼  Find File", "<cmd>Telescope find_files<CR>", button_hl),
+				button("SPC fs", "  Find Word", "<cmd>Telescope live_grep<CR>", button_hl),
+				button("SPC wr", "󰦛  Restore Session", "<cmd>SessionRestore<CR>", button_hl),
+				button("q", "  Quit NVIM", "<cmd>qa<CR>", button_hl),
 			},
 		}
 
