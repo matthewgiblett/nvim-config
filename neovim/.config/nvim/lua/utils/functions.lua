@@ -46,6 +46,17 @@ function F.get_keys(table)
 end
 
 --- @param table table
+--- @param key string
+function F.has_key(table, key)
+	for k, _ in pairs(table) do
+		if k == key then
+			return true
+		end
+	end
+	return false
+end
+
+--- @param table table
 function F.random_or_key_metatable(table)
 	return setmetatable(table, {
 		__index = function(tb, key)
