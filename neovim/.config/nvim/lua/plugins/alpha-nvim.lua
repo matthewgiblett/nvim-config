@@ -1,122 +1,120 @@
+local ui = require("utils.ui")
+local f = require("utils.functions")
+
+local padding = function(val)
+	return { type = "padding", val = val }
+end
+
+local default_colours = {
+	AlphaButtons = "String",
+	AlphaFooter = "Type",
+	AlphaHeader = "Type",
+	AlphaHeaderLabel = "Comment",
+	AlphaShortcut = "Keyword",
+}
+
 local alpha = {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
 	dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
 	config = function()
-		local headers = require("utils.headers")
-		local lazy_stats = require("lazy").stats()
-		local colours = vim.g.colourscheme_alpha
-		local button_hl = colours.button
-		local theme = vim.g.colourscheme_name
+		local colours = require("plugins.colourschemes." .. vim.g.colourscheme)
+		local colourscheme_name = colours.name or "?  unknown theme"
 
-		local ui = require("utils.ui")
-		local get_greeting = ui.get_greeting
-		local button = ui.button
-		local files_buttons = ui.most_recent_files_buttons
+		local AlphaButtons = colours.AlphaButtons or default_colours.AlphaButtons
+		local AlphaHeader = colours.AlphaHeader or default_colours.AlphaHeader
+		local AlphaFooter = colours.AlphaFooter or AlphaHeader
+		local AlphaHeaderLabel = colours.AlphaHeaderLabel or default_colours.AlphaHeaderLabel
+		local AlphaShortcut = colours.AlphaShortcut or default_colours.AlphaShortcut
+		local button_colours = { text = AlphaButtons, file = AlphaHeader, shortcut = AlphaShortcut }
 
-		local opts = function(colour_key)
-			return { position = "center", hl = colours[colour_key] }
+		local heading_tools = {
+			type = "text",
+			val = "󱁤  Tools",
+			opts = { position = "center", hl = AlphaHeader },
+		}
+		local heading_keys = {
+			type = "text",
+			val = "  Key Bindings",
+			opts = { position = "center", hl = AlphaHeader },
+		}
+		local heading_files = {
+			type = "text",
+			val = "󰈢  Recent Files",
+			opts = { position = "center", hl = AlphaHeader },
+		}
+
+		local plugins_count = 0
+		local lazy_ok, lazy = pcall(require, "lazy")
+		if lazy_ok then
+			plugins_count = lazy.stats().count
 		end
+		local plugins = "╔═   " .. plugins_count .. " plugins enabled ═╗"
+		local len = vim.str_utfindex(plugins)
+		local date = f.centre_with_padding("  " .. os.date("%a %d %b"), len, "║")
+		local theme_name = f.centre_with_padding(colourscheme_name, len, "╚══", "══╝")
 
-		math.randomseed(os.time())
-		local header = {
+		local header_art = {
 			type = "text",
-			val = headers["random"],
-			opts = opts("primary"),
+			val = require("utils.headers")["random"].val,
+			opts = { position = "center", hl = AlphaHeader },
 		}
-
-		local user_name = "Matt"
-		local greeting = {
+		local header_greeting = {
 			type = "text",
-			val = get_greeting(user_name),
-			opts = opts("secondary"),
+			val = ui.get_greeting(vim.g.user_name),
+			opts = { position = "center", hl = AlphaHeader },
 		}
-
-		local plugins = {
+		local header_label = {
 			type = "text",
-			val = { "  " .. lazy_stats.count .. " plugins configured" },
-			opts = opts("information"),
-		}
-
-		local date = {
-			type = "text",
-			val = { os.date("  %A %d %B") },
-			opts = opts("information"),
-		}
-
-		local colourscheme = {
-			type = "text",
-			val = { theme },
-			opts = opts("information"),
-		}
-
-		local ver = vim.version()
-		local version = {
-			type = "text",
-			val = { "  " .. ver.major .. "." .. ver.minor .. "." .. ver.patch },
-			opts = opts("information"),
+			val = { plugins, date, theme_name },
+			opts = { position = "center", hl = AlphaHeaderLabel },
 		}
 
 		local tools = {
 			type = "group",
 			val = {
-				{ type = "text", val = "󱁤 Tools", opts = opts("heading") },
-				button("l", "󰒲  Lazy Plugin Manager", "<cmd>Lazy<CR>", button_hl),
-				button("m", "  Mason Package Manager", "<cmd>Mason<CR>", button_hl),
+				heading_tools,
+				ui.button("l", "󰒲  Lazy Plugin Manager", "<cmd>Lazy<CR>", button_colours),
+				ui.button("m", "  Mason Package Manager", "<cmd>Mason<CR>", button_colours),
 			},
 		}
-
 		local key_bindings = {
 			type = "group",
 			val = {
-				{ type = "text", val = " Key Bindings", opts = opts("heading") },
-				button("e", "  New File", "<cmd>ene<CR>", button_hl),
-				button("SPC ee", "  Toggle File Explorer", "<cmd>NvimTreeToggle<CR>", button_hl),
-				button("SPC ff", "󰱼  Find File", "<cmd>Telescope find_files<CR>", button_hl),
-				button("SPC fs", "  Find Word", "<cmd>Telescope live_grep<CR>", button_hl),
-				button("SPC wr", "󰦛  Restore Session", "<cmd>SessionRestore<CR>", button_hl),
-				button("q", "  Quit NVIM", "<cmd>qa<CR>", button_hl),
+				heading_keys,
+				ui.button("e", "  New File", "<cmd>ene<CR>", button_colours),
+				ui.button("SPC ee", "  Toggle File Explorer", "<cmd>NvimTreeToggle<CR>", button_colours),
+				ui.button("SPC ff", "󰱼  Find File", "<cmd>Telescope find_files<CR>", button_colours),
+				ui.button("SPC fs", "  Find Word", "<cmd>Telescope live_grep<CR>", button_colours),
+				ui.button("SPC wr", "󰦛  Restore Session", "<cmd>SessionRestore<CR>", button_colours),
+				ui.button("q", "  Quit NVIM", "<cmd>qa<CR>", button_colours),
 			},
 		}
-
-		local recent_files = {
-			type = "group",
-			val = {
-				{
-					type = "text",
-					val = "󰈢 Recent Files",
-					opts = opts("heading"),
-				},
-				{
-					type = "group",
-					val = { files_buttons(1, 5, vim.fn.getcwd(), colours.button) },
-					opts = { shrink_margin = false },
-				},
-			},
-		}
-
+		local recent_files = { type = "group", val = {} }
+		local files_buttons = ui.most_recent_files_buttons(1, 5, vim.fn.getcwd(), button_colours)
+		if #files_buttons.val > 0 then
+			recent_files.val = {
+				heading_files,
+				files_buttons,
+			}
+		end
+		local v = vim.version()
+		local version = "  " .. v.major .. "." .. v.minor .. "." .. v.patch
 		local footer = {
 			type = "text",
 			val = {
-				"                                      n e o v i m   ",
+				"   " .. version .. "                          n e o v i m   ",
 				"▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄ ▄▄▄▄▄▄▄▄▄▄▄▄▄ ▄",
 			},
-			opts = opts("primary"),
+			opts = { position = "center", hl = AlphaFooter },
 		}
-
-		local padding = function(val)
-			return { type = "padding", val = val }
-		end
 
 		local layout = {
 			padding(1),
-			header,
+			header_art,
 			padding(1),
-			greeting,
-			plugins,
-			date,
-			colourscheme,
-			version,
+			header_greeting,
+			header_label,
 			padding(1),
 			tools,
 			padding(1),

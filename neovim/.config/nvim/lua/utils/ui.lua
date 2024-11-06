@@ -43,11 +43,11 @@ function F.button(shortcut, text, keybind, highlight_opts)
 		position = "center",
 		cursor = 3,
 		width = 50,
+		shortcut = shortcut,
 		align_shortcut = "right",
-		hl = hl_text,
 		hl_shortcut = hl_shortcut,
+		hl = hl_text,
 	}
-	opts.shortcut = shortcut
 
 	if keybind then
 		local keybind_opts = { noremap = true, silent = true, nowait = true }
@@ -138,7 +138,7 @@ function F.most_recent_files_buttons(start, stop, cwd, highlight_opts)
 	return {
 		type = "group",
 		val = buttons,
-		opts = {},
+		opts = { shrink_margin = false },
 	}
 end
 

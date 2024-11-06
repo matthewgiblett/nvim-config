@@ -2,7 +2,8 @@ local opt = vim.opt
 
 -- colourscheme key can be "random" or specific  file
 -- e.g., "rose-pine"
-vim.g.colourscheme_key = "random"
+vim.g.colourscheme = "random"
+vim.g.user_name = "Matt"
 vim.g.python3_host_prog = vim.fn.exepath("python3")
 
 opt.guicursor = ""

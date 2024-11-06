@@ -1,49 +1,21 @@
-local function get_file_name(file)
-	return file:match("^.+/(.+)%..+$")
-end
+local F = require("utils.functions")
 
-local function get_files(dir)
-	local paths = vim.split(vim.fn.glob(dir), "\n")
-	local files = {}
-	for _, file in pairs(paths) do
-		local key = get_file_name(file)
-		files[key] = "plugins.colourschemes." .. key
-	end
-	return files
-end
+local colourscheme_files = F.get_files(vim.fn.stdpath("config") .. "/lua/plugins/colourschemes/*lua")
 
-local function get_keys(t)
-	local keys = {}
-	for key, _ in pairs(t) do
-		table.insert(keys, key)
-	end
-	return keys
-end
+local selected_colour = F.random_or_key_metatable(colourscheme_files)[vim.g.colourscheme]
+vim.g.colourscheme = selected_colour
 
-local cs_key = vim.g.colourscheme_key
-local cs_dir = vim.fn.stdpath("config") .. "/lua/plugins/colourschemes/*lua"
-local cs_files = get_files(cs_dir)
 local colourschemes = {}
-
-if cs_key == "random" or not vim.tbl_contains(get_keys(cs_files), cs_key) then
-	local keys = vim.tbl_keys(cs_files)
-	cs_key = keys[math.random(1, #keys)]
-end
-
-local i = 0
-for key, file in pairs(cs_files) do
-	i = i + 1
-	local colourscheme = require(file)
-	if key == cs_key then
+for _, file in pairs(colourscheme_files) do
+	local colourscheme = require("plugins.colourschemes." .. file)
+	if file == selected_colour then
 		colourscheme.lazy = false
 		colourscheme.enabled = true
 		colourscheme.priority = 1000
-		vim.g.colourscheme_name = colourscheme.name
-		vim.g.colourscheme_alpha = colourscheme.alpha
 	else
 		colourscheme.lazy = true
 	end
-	colourschemes[i] = colourscheme
+	table.insert(colourschemes, colourscheme)
 end
 
 return colourschemes
