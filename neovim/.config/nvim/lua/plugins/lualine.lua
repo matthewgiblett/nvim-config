@@ -7,6 +7,7 @@ return {
 		local lazy_status = require("lazy.status")
 		lualine.setup({
 			options = {
+				theme = vim.g.colourscheme,
 				component_separators = { left = "", right = "" },
 			},
 			sections = {
