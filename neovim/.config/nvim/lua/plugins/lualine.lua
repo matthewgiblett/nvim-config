@@ -10,6 +10,11 @@ return {
 				component_separators = { left = "", right = "" },
 			},
 			sections = {
+				lualine_c = {
+					function()
+						return require("auto-session.lib").current_session_name(true)
+					end,
+				},
 				lualine_x = {
 					{
 						lazy_status.updates,

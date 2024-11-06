@@ -9,6 +9,7 @@ return {
 		require("auto-session").setup({
 			auto_restore_enabled = false,
 			auto_session_suppress_dirs = { "~/", "~/Developer/", "~/Downloads", "~/Documents", "~/Desktop/" },
+			bypass_save_filetypes = { "alpha" },
 		})
 	end,
 }
