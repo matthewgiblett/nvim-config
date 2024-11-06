@@ -37,11 +37,8 @@ return {
 		})
 		vim.cmd([[colorscheme kanagawa]])
 	end,
-	alpha = {
-		primary = "String",
-		secondary = "String",
-		information = "Operator",
-		heading = "Error",
-		button = { text = "Variable", shortcut = "Boolean" },
-	},
+	AlphaButtons = "Variable",
+	AlphaHeader = "String",
+	AlphaHeaderLabel = "Operator",
+	AlphaShortcut = "Boolean",
 }

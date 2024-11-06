@@ -11,11 +11,8 @@ return {
 		-- variants: nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
 		vim.cmd([[colorscheme carbonfox]])
 	end,
-	alpha = {
-		primary = "Function",
-		secondary = "String",
-		information = "Boolean",
-		heading = "String",
-		button = { text = "Constant", shortcut = "Function" },
-	},
+	AlphaButtons = "Boolean",
+	AlphaHeader = "Function",
+	AlphaHeaderLabel = "Comment",
+	AlphaShortcut = "Function",
 }

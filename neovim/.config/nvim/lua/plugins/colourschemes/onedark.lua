@@ -13,11 +13,8 @@ return {
 		})
 		vim.cmd([[colorscheme onedark]])
 	end,
-	alpha = {
-		primary = "Function",
-		secondary = "String",
-		information = "Variable",
-		heading = "String",
-		button = { text = "Constant", shortcut = "Function" },
-	},
+	AlphaButtons = "Constant",
+	AlphaHeader = "Function",
+	AlphaHeaderLabel = "Variable",
+	AlphaShortcut = "Function",
 }

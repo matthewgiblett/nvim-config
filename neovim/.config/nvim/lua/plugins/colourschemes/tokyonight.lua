@@ -10,11 +10,8 @@ return {
 		})
 		vim.cmd([[colorscheme tokyonight]])
 	end,
-	alpha = {
-		primary = "Operator",
-		secondary = "Keyword",
-		information = "Special",
-		heading = "String",
-		button = { text = "Tag", shortcut = "Error" },
-	},
+	AlphaButtons = "Tag",
+	AlphaHeader = "Operator",
+	AlphaHeaderLabel = "Special",
+	AlphaShortcut = "Error",
 }

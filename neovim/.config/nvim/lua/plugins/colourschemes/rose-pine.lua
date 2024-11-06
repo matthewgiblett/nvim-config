@@ -11,11 +11,8 @@ return {
 
 		vim.cmd([[colorscheme rose-pine]])
 	end,
-	alpha = {
-		primary = "String",
-		secondary = "String",
-		information = "Operator",
-		heading = "Error",
-		button = { text = "Tag", shortcut = "Keyword" },
-	},
+	AlphaButtons = "Tag",
+	AlphaHeader = "String",
+	AlphaHeaderLabel = "Operator",
+	AlphaShortcut = "Keyword",
 }

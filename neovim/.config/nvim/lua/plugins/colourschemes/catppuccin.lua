@@ -33,11 +33,8 @@ return {
 
 		vim.cmd([[colorscheme catppuccin]])
 	end,
-	alpha = {
-		primary = "String",
-		secondary = "String",
-		information = "Comment",
-		heading = "String",
-		button = { text = "Function", shortcut = "Conditional" },
-	},
+	AlphaButtons = "Function",
+	AlphaHeader = "String",
+	AlphaHeaderLabel = "Comment",
+	AlphaShortcut = "String",
 }

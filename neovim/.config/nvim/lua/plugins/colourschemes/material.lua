@@ -10,7 +10,7 @@ return {
 				-- "flash"
 				"gitsigns",
 				-- "hop",
-				-- "indent-blankline",
+				"indent-blankline",
 				"lspsaga",
 				-- "mini",
 				-- "neogit",
@@ -34,11 +34,8 @@ return {
 		vim.g.material_style = "deep ocean"
 		vim.cmd([[colorscheme material]])
 	end,
-	alpha = {
-		primary = "Operator",
-		secondary = "Operator",
-		information = "String",
-		heading = "Error",
-		button = { text = "String", shortcut = "Keyword" },
-	},
+	AlphaButtons = "String",
+	AlphaHeader = "Operator",
+	AlphaHeaderLabel = "String",
+	AlphaShortcut = "Keyword",
 }
