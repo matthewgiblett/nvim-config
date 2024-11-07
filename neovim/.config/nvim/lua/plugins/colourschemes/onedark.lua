@@ -10,11 +10,16 @@ return {
 			lualine = {
 				transparent = true,
 			},
+			highlights = {
+				["AlphaButton"] = { fg = "$cyan" },
+				["AlphaFile"] = { fg = "$green" },
+				["AlphaFooter"] = { fg = "$blue" },
+				["AlphaHeader"] = { fg = "$blue", fmt = "bold" },
+				["AlphaHeading"] = { fg = "$blue", fmt = "bold" },
+				["AlphaHeaderLabel"] = { fg = "$fg", fmt = "italic" },
+				["AlphaShortcut"] = { fg = "$cyan", fmt = "bold" },
+			},
 		})
 		vim.cmd([[colorscheme onedark]])
 	end,
-	AlphaButtons = "Constant",
-	AlphaHeader = "Function",
-	AlphaHeaderLabel = "Variable",
-	AlphaShortcut = "Function",
 }
