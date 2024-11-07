@@ -3,23 +3,18 @@ return {
 	name = "  Material",
 	enabled = true,
 	config = function()
+		local colours = require("material.colors")
 		require("material").setup({
 			plugins = {
 				"dap",
-				-- "dashboard",
-				-- "flash"
 				"gitsigns",
-				-- "hop",
+				"harpoon",
+				"illuminate",
 				"indent-blankline",
 				"lspsaga",
-				-- "mini",
-				-- "neogit",
-				-- "neorg",
 				"nvim-cmp",
-				-- "nvim-navic",
 				"nvim-tree",
 				"nvim-web-devicons",
-				-- "sneak",
 				"telescope",
 				"trouble",
 				"which-key",
@@ -29,13 +24,18 @@ return {
 				background = true,
 			},
 			lualine_style = "stealth",
+			custom_highlights = {
+				AlphaButton = { fg = colours.main.green },
+				AlphaFile = { fg = colours.main.red },
+				AlphaFooter = { fg = colours.main.cyan },
+				AlphaHeader = { fg = colours.main.cyan, bold = true },
+				AlphaHeading = { fg = colours.main.cyan, bold = true },
+				AlphaHeaderLabel = { fg = colours.editor.fg, italic = true },
+				AlphaShortcut = { fg = colours.main.purple, bold = true },
+			},
 		})
 		-- variants: darker, lighter, oceanic, palenight, deep ocean
 		vim.g.material_style = "deep ocean"
 		vim.cmd([[colorscheme material]])
 	end,
-	AlphaButtons = "String",
-	AlphaHeader = "Operator",
-	AlphaHeaderLabel = "String",
-	AlphaShortcut = "Keyword",
 }
