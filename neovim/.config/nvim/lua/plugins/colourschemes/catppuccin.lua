@@ -12,6 +12,9 @@ return {
 				fidget = true,
 				gitsigns = true,
 				harpoon = true,
+				indent_blankline = {
+					enabled = true,
+				},
 				lsp_saga = true,
 				mason = true,
 				cmp = true,
@@ -24,17 +27,25 @@ return {
 				telescope = {
 					enabled = true,
 				},
+				lsp_trouble = true,
 				illuminate = {
 					enabled = true,
 				},
 				which_key = true,
 			},
+			custom_highlights = function(colours)
+				return {
+					AlphaButton = { fg = colours.blue },
+					AlphaFile = { fg = colours.green },
+					AlphaFooter = { fg = colours.green, italic = false },
+					AlphaHeader = { fg = colours.green, bold = true },
+					AlphaHeading = { fg = colours.green, bold = true },
+					AlphaHeaderLabel = { fg = colours.overlay2, italic = true },
+					AlphaShortcut = { fg = colours.mauve, bold = true },
+				}
+			end,
 		})
 
 		vim.cmd([[colorscheme catppuccin]])
 	end,
-	AlphaButtons = "Function",
-	AlphaHeader = "String",
-	AlphaHeaderLabel = "Comment",
-	AlphaShortcut = "String",
 }
