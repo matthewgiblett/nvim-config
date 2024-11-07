@@ -18,8 +18,8 @@ return {
 					},
 				},
 			},
-			overrides = function(colors)
-				local theme = colors.theme
+			overrides = function(colours)
+				local theme = colours.theme
 				return {
 					NormalFloat = { bg = "none" },
 					FloatBorder = { bg = "none" },
@@ -27,6 +27,14 @@ return {
 					NormalDark = { fg = "none", bg = "none" },
 					LazyNormal = { bg = "none", fg = "none" },
 					MasonNormal = { bg = "none", fg = "none" },
+
+					AlphaButton = { fg = colours.palette.lightBlue },
+					AlphaFile = { fg = colours.palette.peachRed },
+					AlphaFooter = { fg = colours.palette.lightBlue },
+					AlphaHeader = { fg = colours.palette.lightBlue, bold = true },
+					AlphaHeading = { fg = colours.palette.fujiWhite, bold = true },
+					AlphaHeaderLabel = { fg = colours.palette.fujiWhite, italic = true },
+					AlphaShortcut = { fg = colours.palette.springGreen, bold = true },
 
 					TelescopeTitle = { fg = theme.syn.string, bold = true },
 					TelescopeBorder = { fg = theme.ui.bg_dim, bg = "none" },
@@ -37,8 +45,4 @@ return {
 		})
 		vim.cmd([[colorscheme kanagawa]])
 	end,
-	AlphaButtons = "Variable",
-	AlphaHeader = "String",
-	AlphaHeaderLabel = "Operator",
-	AlphaShortcut = "Boolean",
 }
