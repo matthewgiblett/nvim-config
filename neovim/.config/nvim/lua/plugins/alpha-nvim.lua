@@ -5,14 +5,6 @@ local padding = function(val)
 	return { type = "padding", val = val }
 end
 
-local default_colours = {
-	AlphaButtons = "String",
-	AlphaFooter = "Type",
-	AlphaHeader = "Type",
-	AlphaHeaderLabel = "Comment",
-	AlphaShortcut = "Keyword",
-}
-
 local alpha = {
 	"goolord/alpha-nvim",
 	event = "VimEnter",
@@ -21,30 +13,27 @@ local alpha = {
 		local colours = require("plugins.colourschemes." .. vim.g.colourscheme)
 		local colourscheme_name = colours.name or "?  unknown theme"
 
-		local AlphaButtons = colours.AlphaButtons or default_colours.AlphaButtons
-		local AlphaHeader = colours.AlphaHeader or default_colours.AlphaHeader
-		local AlphaFile = colours.AlphaFile or AlphaHeader
-		local AlphaFooter = colours.AlphaFooter or AlphaHeader
-		local AlphaHeadings = colours.AlphaHeadings or AlphaHeader
-		local AlphaHeaderLabel = colours.AlphaHeaderLabel or default_colours.AlphaHeaderLabel
-		local AlphaShortcut = colours.AlphaShortcut or default_colours.AlphaShortcut
+		local AlphaHeader = "AlphaHeader"
+		local AlphaFooter = "AlphaFooter"
+		local AlphaHeading = "AlphaHeading"
+		local AlphaHeaderLabel = "AlphaHeaderLabel"
 
-		local button_colours = { text = AlphaButtons, file = AlphaFile, shortcut = AlphaShortcut }
+		local button_colours = { text = "AlphaButton", file = "AlphaFile", shortcut = "AlphaShortcut" }
 
 		local heading_tools = {
 			type = "text",
 			val = "󱁤  Tools",
-			opts = { position = "center", hl = AlphaHeadings },
+			opts = { position = "center", hl = AlphaHeading },
 		}
 		local heading_keys = {
 			type = "text",
 			val = "  Key Bindings",
-			opts = { position = "center", hl = AlphaHeadings },
+			opts = { position = "center", hl = AlphaHeading },
 		}
 		local heading_files = {
 			type = "text",
 			val = "󰈢  Recent Files",
-			opts = { position = "center", hl = AlphaHeadings },
+			opts = { position = "center", hl = AlphaHeading },
 		}
 
 		local plugins_count = 0
