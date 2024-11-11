@@ -16,13 +16,17 @@ function F.get_extension(filename)
 end
 
 --- @param filename string
-function F.get_icon(filename)
+--- @param default boolean? optional
+function F.get_icon(filename, default)
+	if default == nil then
+		default = true
+	end
 	local status, devicons = pcall(require, "nvim-web-devicons")
 	if not status then
 		return "?"
 	end
 	local extension = F.get_extension(filename)
-	return devicons.get_icon(filename, extension, { default = true })
+	return devicons.get_icon(filename, extension, { default = default })
 end
 
 --- @param dir string
