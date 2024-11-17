@@ -6,9 +6,23 @@ return {
 		local lualine = require("lualine")
 		local utils = require("lualine.utils")
 
+		local theme = utils.transparent_auto()
+		if vim.g.colors_name == "material" then
+			local colors = require("material.colors")
+			local lualine_modes = { "insert", "normal", "visual", "command", "replace", "inactive", "terminal" }
+			for _, mode in ipairs(lualine_modes) do
+				if theme[mode] and theme[mode].a then
+					theme[mode].a.fg = colors.editor.highlight
+				end
+				if theme[mode] and theme[mode].b then
+					theme[mode].b.bg = colors.editor.highlight
+				end
+			end
+		end
+
 		lualine.setup({
 			options = {
-				theme = utils.transparent_auto(),
+				theme = theme,
 				component_separators = {
 					left = "",
 					right = "",
