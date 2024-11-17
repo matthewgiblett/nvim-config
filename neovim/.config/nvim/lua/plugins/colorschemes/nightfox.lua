@@ -1,6 +1,6 @@
 return {
 	"EdenEast/nightfox.nvim",
-	name = "  Nightfox",
+	name = "  Nightfox", -- f269
 	enabled = true,
 	config = function()
 		require("nightfox").setup({

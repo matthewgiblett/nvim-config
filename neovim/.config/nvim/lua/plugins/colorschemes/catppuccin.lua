@@ -1,6 +1,6 @@
 return {
 	"catppuccin/nvim",
-	name = "󰄛  Catppuccin",
+	name = "󰄛  Catppuccin", -- f011b
 	enabled = true,
 	config = function()
 		require("catppuccin").setup({
@@ -33,15 +33,15 @@ return {
 				},
 				which_key = true,
 			},
-			custom_highlights = function(colours)
+			custom_highlights = function(colors)
 				return {
-					AlphaButton = { fg = colours.blue },
-					AlphaFile = { fg = colours.green },
-					AlphaFooter = { fg = colours.green, italic = false },
-					AlphaHeader = { fg = colours.green, bold = true },
-					AlphaHeading = { fg = colours.green, bold = true },
-					AlphaHeaderLabel = { fg = colours.overlay2, italic = true },
-					AlphaShortcut = { fg = colours.mauve, bold = true },
+					AlphaButton = { fg = colors.blue },
+					AlphaFile = { fg = colors.green },
+					AlphaFooter = { fg = colors.green, italic = false },
+					AlphaHeader = { fg = colors.green, bold = true },
+					AlphaHeading = { fg = colors.green, bold = true },
+					AlphaHeaderLabel = { fg = colors.overlay2, italic = true },
+					AlphaShortcut = { fg = colors.mauve, bold = true },
 				}
 			end,
 		})

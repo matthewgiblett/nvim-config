@@ -1,6 +1,6 @@
 return {
 	"navarasu/onedark.nvim",
-	name = "󰛡  One Dark",
+	name = "󰛡  One Dark", -- f06e1
 	enabled = true,
 	config = function()
 		require("onedark").setup({

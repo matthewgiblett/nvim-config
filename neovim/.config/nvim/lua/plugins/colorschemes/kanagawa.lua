@@ -1,6 +1,6 @@
 return {
 	"rebelot/kanagawa.nvim",
-	name = "  Kanagawa",
+	name = "󰻈  Kanagawa", -- f0ec8
 	enabled = true,
 	config = function()
 		require("kanagawa").setup({
@@ -18,8 +18,8 @@ return {
 					},
 				},
 			},
-			overrides = function(colours)
-				local theme = colours.theme
+			overrides = function(colors)
+				local theme = colors.theme
 				return {
 					NormalFloat = { bg = "none" },
 					FloatBorder = { bg = "none" },
@@ -28,13 +28,13 @@ return {
 					LazyNormal = { bg = "none", fg = "none" },
 					MasonNormal = { bg = "none", fg = "none" },
 
-					AlphaButton = { fg = colours.palette.lightBlue },
-					AlphaFile = { fg = colours.palette.peachRed },
-					AlphaFooter = { fg = colours.palette.lightBlue },
-					AlphaHeader = { fg = colours.palette.lightBlue, bold = true },
-					AlphaHeading = { fg = colours.palette.fujiWhite, bold = true },
-					AlphaHeaderLabel = { fg = colours.palette.fujiWhite, italic = true },
-					AlphaShortcut = { fg = colours.palette.springGreen, bold = true },
+					AlphaButton = { fg = colors.palette.lightBlue },
+					AlphaFile = { fg = colors.palette.peachRed },
+					AlphaFooter = { fg = colors.palette.lightBlue },
+					AlphaHeader = { fg = colors.palette.lightBlue, bold = true },
+					AlphaHeading = { fg = colors.palette.fujiWhite, bold = true },
+					AlphaHeaderLabel = { fg = colors.palette.fujiWhite, italic = true },
+					AlphaShortcut = { fg = colors.palette.springGreen, bold = true },
 
 					TelescopeTitle = { fg = theme.syn.string, bold = true },
 					TelescopeBorder = { fg = theme.ui.bg_dim, bg = "none" },

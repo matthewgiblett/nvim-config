@@ -1,9 +1,9 @@
 return {
 	"marko-cerovac/material.nvim",
-	name = "  Material",
+	name = "  Material", -- e673
 	enabled = true,
 	config = function()
-		local colours = require("material.colors")
+		local colors = require("material.colors")
 		require("material").setup({
 			plugins = {
 				"dap",
@@ -23,15 +23,14 @@ return {
 				colored_cursor = true,
 				background = true,
 			},
-			lualine_style = "stealth",
 			custom_highlights = {
-				AlphaButton = { fg = colours.main.green },
-				AlphaFile = { fg = colours.main.red },
-				AlphaFooter = { fg = colours.main.cyan },
-				AlphaHeader = { fg = colours.main.cyan, bold = true },
-				AlphaHeading = { fg = colours.main.cyan, bold = true },
-				AlphaHeaderLabel = { fg = colours.editor.fg, italic = true },
-				AlphaShortcut = { fg = colours.main.purple, bold = true },
+				AlphaButton = { fg = colors.main.green },
+				AlphaFile = { fg = colors.main.red },
+				AlphaFooter = { fg = colors.main.cyan },
+				AlphaHeader = { fg = colors.main.cyan, bold = true },
+				AlphaHeading = { fg = colors.main.cyan, bold = true },
+				AlphaHeaderLabel = { fg = colors.editor.fg, italic = true },
+				AlphaShortcut = { fg = colors.main.purple, bold = true },
 			},
 		})
 		-- variants: darker, lighter, oceanic, palenight, deep ocean

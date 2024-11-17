@@ -1,5 +1,5 @@
 local ui = require("utils.ui")
-local f = require("utils.functions")
+local utils = require("utils.functions")
 
 local padding = function(val)
 	return { type = "padding", val = val }
@@ -10,9 +10,6 @@ local alpha = {
 	event = "VimEnter",
 	dependencies = { "nvim-tree/nvim-web-devicons", "nvim-lua/plenary.nvim" },
 	config = function()
-		local colours = require("plugins.colourschemes." .. vim.g.colourscheme)
-		local colourscheme_name = colours.name or "?  unknown theme"
-
 		local AlphaHeader = "AlphaHeader"
 		local AlphaFooter = "AlphaFooter"
 		local AlphaHeading = "AlphaHeading"
@@ -43,8 +40,8 @@ local alpha = {
 		end
 		local plugins = "╔═   " .. plugins_count .. " plugins enabled ═╗"
 		local len = vim.str_utfindex(plugins)
-		local date = f.centre_with_padding("  " .. os.date("%a %d %b"), len, "║")
-		local theme_name = f.centre_with_padding(colourscheme_name, len, "╚══", "══╝")
+		local date = utils.centre_with_padding("  " .. os.date("%a %d %b"), len, "║")
+		local theme_name = utils.centre_with_padding(vim.g.colorscheme, len, "╚══", "══╝")
 
 		local header_art = {
 			type = "text",

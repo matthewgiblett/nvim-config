@@ -1,6 +1,6 @@
 return {
 	"rose-pine/neovim",
-	name = "󰧱  Rosé Pine",
+	name = "󰧱  Rosé Pine", -- f09f1
 	enabled = true,
 	config = function()
 		require("rose-pine").setup({
