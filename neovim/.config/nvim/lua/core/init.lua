@@ -1,4 +1,5 @@
 math.randomseed(os.time())
+require("core.autocmd")
 require("core.keymaps")
 require("core.options")
 require("core.lazy")
