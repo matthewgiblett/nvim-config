@@ -76,8 +76,6 @@ return {
 			},
 		})
 
-		-- capabilities.textDocument.publishDiagnostics = { tagSupport = { valueSet = { 2 } } }
-
 		lspconfig["pyright"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
@@ -92,6 +90,16 @@ return {
 							reportUnusedImport = "none",
 							reportUnusedVariable = "error",
 						},
+					},
+				},
+			},
+		})
+
+		lspconfig["nil_ls"].setup({
+			settings = {
+				["nil"] = {
+					formatting = {
+						command = { "nixfmt" },
 					},
 				},
 			},

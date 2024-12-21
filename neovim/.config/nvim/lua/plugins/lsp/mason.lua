@@ -35,6 +35,7 @@ return {
 				"isort", -- python formatter
 				"black", -- python formatter
 				"debugpy", -- python debugger
+				"nil",
 			},
 		})
 	end,
